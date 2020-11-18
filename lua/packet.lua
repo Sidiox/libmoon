@@ -1004,5 +1004,14 @@ pkt.getGreQinQUdpPacket = function(self, ip4)
 end
 
 pkt.getMPLSPacket = createStack("eth", "mpls")
+pkt.getMPLSUDPPacket = createStack("eth", "mpls", "ip4", "udp")
+pkt.getMPLS2StackPacket = createStack("eth", { "mpls", name = "mpls1" }, {"mpls", name = "mpls2" })
+
+pkt.getMPLS2UDPPacket = createStack(
+	"eth",
+	{"mpls", name = "mpls1"},
+	{"mpls", name = "mpls2"},
+	"ip4", "udp"
+)
 
 return pkt
